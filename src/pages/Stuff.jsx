@@ -7,15 +7,15 @@ function Stuff() {
       <div className="stuff-plasma">
         <Plasma
           color="#B497CF"
-          speed={0.4}
+          speed={0.35}
           direction="forward"
           scale={1.2}
-          opacity={0.7}
+          opacity={0.65}
           mouseInteractive={false}
-          renderScale={1}
+          renderScale={0.65}
           maxDpr={1.5}
-          targetFps={60}
-          iterations={60}
+          targetFps={30}
+          iterations={40}
         />
       </div>
 
