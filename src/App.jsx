@@ -1,3 +1,4 @@
+import PageSEO from "./components/PageSEO";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -14,9 +15,50 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/stuff" element={<Stuff />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <PageSEO
+                    title="kavijfr | Software Developer & Cinematographer"
+                    description="Portfolio of Kavija, a software developer and cinematographer showcasing software projects, web applications, creative work, and experiments."
+                    canonical="https://kavija.me/"
+                  />
+
+                  <Home />
+                </>
+              }
+            />
+
+            <Route
+              path="/projects"
+              element={
+                <>
+                  <PageSEO
+                    title="Projects | kavijfr"
+                    description="Explore software and web development projects by Kavija, including LocalHub, Moodflix, GitHub Account Viewer, management systems, and more."
+                    canonical="https://kavija.me/projects"
+                  />
+
+                  <Projects />
+                </>
+              }
+            />
+
+            <Route
+              path="/stuff"
+              element={
+                <>
+                  <PageSEO
+                    title="Stuff | kavijfr"
+                    description="Experiments, creative ideas, and other stuff by Kavija."
+                    canonical="https://kavija.me/stuff"
+                  />
+
+                  <Stuff />
+                </>
+              }
+            />
           </Routes>
         </main>
 
