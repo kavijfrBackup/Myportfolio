@@ -7,7 +7,7 @@ function Navbar() {
   const items = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "Stuff", href: "/stuff" }
+    { label: "Interactions", href: "/stuff" }
   ];
 
   return (
