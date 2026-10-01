@@ -1,10 +1,10 @@
 import StarBorder from "../components/StarBorder";
 import Dock from "../components/Dock";
 import SpecularButton from "../components/SpecularButton";
-import FoldText from "../components/FoldText";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail, GraduationCap } from "lucide-react";
 import PixelBlast from "../components/PixelBlast";
+import TechText from "../components/TechText";
 
 function Home() {
 
@@ -81,21 +81,8 @@ function Home() {
           </span>
         </SpecularButton>
 
-        <div className="hero-title">
-          <FoldText
-            text="KAVIJFR"
-            splitBy="char"
-            hinge="top"
-            duration={0.7}
-            stagger={0.07}
-            ease="power3.out"
-            perspective={800}
-            creaseShading={0.55}
-            trigger="mount"
-            fontSize="clamp(3.2rem, 8vw, 7rem)"
-            fontWeight={800}
-            color="#f5f5f5"
-          />
+        <div className="hero-title tech-title">
+          <TechText text="KAVIJFR" />
         </div>
 
         <div className="hero-roles">

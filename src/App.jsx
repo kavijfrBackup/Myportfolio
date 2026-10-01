@@ -2,9 +2,10 @@ import PageSEO from "./components/PageSEO";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Stuff from "./pages/Stuff";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Interactions from "./pages/Interactions";
+import IsuruVilla from "./pages/IsuruVilla";
 import "./App.css";
 
 function App() {
@@ -46,16 +47,31 @@ function App() {
             />
 
             <Route
-              path="/stuff"
+            path="/stuff"
+            element={
+              <>
+                <PageSEO
+                  title="Interactions | kavijfr"
+                  description="Commercial work, collaborations, and real-world systems by Kavija."
+                  canonical="https://kavija.me/stuff"
+                />
+
+                <Interactions />
+              </>
+            }
+            />
+
+            <Route
+              path="/interactions/isuru-villa"
               element={
                 <>
                   <PageSEO
-                    title="Stuff | kavijfr"
-                    description="Experiments, creative ideas, and other stuff by Kavija."
-                    canonical="https://kavija.me/stuff"
+                    title="Isuru Villa | kavijfr"
+                    description="A commercial villa management system designed and developed for Isuru Villa."
+                    canonical="https://kavija.me/interactions/isuru-villa"
                   />
 
-                  <Stuff />
+                  <IsuruVilla />
                 </>
               }
             />
