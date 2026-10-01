@@ -19,19 +19,7 @@ function Stuff() {
         />
       </div>
 
-      <p className="maintenance-text">
-        Under maintenance — something cool is brewing.
-      </p>
-
-      <div className="stuff-lanyard">
-        <Lanyard
-          frontImage="/lanyard.gif"
-          position={[0, 0, 30]}
-          gravity={[0, -40, 0]}
-          fov={20}
-          transparent
-        />
-      </div>
+  
     </section>
   );
 }
