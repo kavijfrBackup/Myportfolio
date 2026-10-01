@@ -106,7 +106,7 @@ function Home() {
             thickness={1}
             className="role-star"
           >
-            Software Developer
+            System Developer
           </StarBorder>
 
           <StarBorder
@@ -116,7 +116,7 @@ function Home() {
             thickness={1}
             className="role-star"
           >
-            Cinematographer
+            Security Engineer
           </StarBorder>
         </div>
 
