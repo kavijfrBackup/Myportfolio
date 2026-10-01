@@ -1,5 +1,5 @@
 import Plasma from "../components/Plasma";
-import Lanyard from "../components/Lanyard";
+
 
 function Stuff() {
   return (
