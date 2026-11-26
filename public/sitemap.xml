@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kavija.me/</loc>
+    <loc>https://kavija.arqeno.work/</loc>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://kavija.me/projects</loc>
+    <loc>https://kavija.arqeno.work/projects</loc>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://kavija.me/stuff</loc>
+    <loc>https://kavija.arqeno.work/stuff</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kavija.arqeno.work/interactions/isuru-villa</loc>
     <priority>0.5</priority>
   </url>
 </urlset>

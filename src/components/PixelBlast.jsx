@@ -27,7 +27,7 @@ const createTouchTexture = () => {
   };
   const drawPoint = p => {
     const pos = { x: p.x * size, y: (1 - p.y) * size };
-    let intensity = 1;
+    let intensity;
     const easeOutSine = t => Math.sin((t * Math.PI) / 2);
     const easeOutQuad = t => -t * (t - 2);
     if (p.age < maxAge * 0.3) intensity = easeOutSine(p.age / (maxAge * 0.3));
@@ -496,10 +496,11 @@ const PixelBlast = ({
       renderer.domElement.addEventListener('pointermove', onPointerMove, {
         passive: true
       });
-      let raf = 0;
       const animate = () => {
+        const state = threeRef.current;
+        if (state?.renderer !== renderer) return;
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
-          raf = requestAnimationFrame(animate);
+          state.raf = requestAnimationFrame(animate);
           return;
         }
         uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
@@ -516,9 +517,8 @@ const PixelBlast = ({
           });
           composer.render();
         } else renderer.render(scene, camera);
-        raf = requestAnimationFrame(animate);
+        state.raf = requestAnimationFrame(animate);
       };
-      raf = requestAnimationFrame(animate);
       threeRef.current = {
         renderer,
         scene,
@@ -528,7 +528,7 @@ const PixelBlast = ({
         clickIx: 0,
         uniforms,
         resizeObserver: ro,
-        raf,
+        raf: requestAnimationFrame(animate),
         quad,
         timeOffset,
         composer,

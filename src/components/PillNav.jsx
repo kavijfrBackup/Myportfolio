@@ -6,6 +6,8 @@ import './PillNav.css';
 const PillNav = ({
   logo,
   logoAlt = 'Logo',
+  logoText,
+  animatedBrand,
   items,
   activeHref,
   className = '',
@@ -208,12 +210,19 @@ const PillNav = ({
     ['--pill-text']: resolvedPillTextColor
   };
 
+  const logoClassName = logoText ? 'pill-logo pill-logo--text' : 'pill-logo';
+  const logoContent = logoText || <img src={logo} alt={logoAlt} />;
+
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        {isRouterLink(items?.[0]?.href) ? (
+        {animatedBrand ? (
+          <div className="pill-logo pill-logo--text pill-logo--animated" ref={logoRef}>
+            {animatedBrand}
+          </div>
+        ) : isRouterLink(items?.[0]?.href) ? (
           <Link
-            className="pill-logo"
+            className={logoClassName}
             to={items[0].href}
             aria-label="Home"
             role="menuitem"
@@ -221,18 +230,18 @@ const PillNav = ({
               logoRef.current = el;
             }}
           >
-            <img src={logo} alt={logoAlt} />
+            {logoContent}
           </Link>
         ) : (
           <a
-            className="pill-logo"
+            className={logoClassName}
             href={items?.[0]?.href || '#'}
             aria-label="Home"
             ref={el => {
               logoRef.current = el;
             }}
           >
-            <img src={logo} alt={logoAlt} />
+            {logoContent}
           </a>
         )}
 

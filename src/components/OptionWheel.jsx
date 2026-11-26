@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback, useEffect, useLayoutEffect } from 'react';
 import './OptionWheel.css';
 
 const DEFAULT_ITEMS = [
@@ -56,30 +56,32 @@ const OptionWheel = ({
   const [selectedIndex, setSelectedIndex] = useState(defaultSelected);
   const [isDragging, setIsDragging] = useState(false);
 
-  const remPx = typeof window !== 'undefined' ? parseFloat(getComputedStyle(document.documentElement).fontSize) || 16 : 16;
+  useLayoutEffect(() => {
+    const remPx = typeof window !== 'undefined' ? parseFloat(getComputedStyle(document.documentElement).fontSize) || 16 : 16;
 
-  onChangeRef.current = onChange;
-  cfgRef.current = {
-    count: items.length,
-    items,
-    rowH: Math.max(fontSize * spacing * remPx, 1),
-    curve,
-    tilt,
-    blur,
-    fade,
-    minOpacity,
-    side,
-    loop,
-    smoothing,
-    draggable,
-    soundUrl,
-    soundVolume
-  };
+    onChangeRef.current = onChange;
+    cfgRef.current = {
+      count: items.length,
+      items,
+      rowH: Math.max(fontSize * spacing * remPx, 1),
+      curve,
+      tilt,
+      blur,
+      fade,
+      minOpacity,
+      side,
+      loop,
+      smoothing,
+      draggable,
+      soundUrl,
+      soundVolume
+    };
+  });
 
   // Single rAF loop that eases the wheel position toward its target with
   // frame-rate independent exponential smoothing, then lays every option out
   // along the curve based on its distance from the current position.
-  const runFrame = useCallback(now => {
+  const runFrame = useCallback(function animateFrame(now) {
     const dt = Math.min((now - lastRef.current) / 1000, 0.05);
     lastRef.current = now;
     const cfg = cfgRef.current;
@@ -124,7 +126,7 @@ const OptionWheel = ({
       el.style.setProperty('--ow-p', Math.max(0, 1 - Math.min(dist, 1)).toFixed(4));
     }
 
-    rafRef.current = settled ? null : requestAnimationFrame(runFrame);
+    rafRef.current = settled ? null : requestAnimationFrame(animateFrame);
   }, []);
 
   const startLoop = useCallback(() => {

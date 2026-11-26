@@ -68,6 +68,43 @@
   display: block;
 }
 
+.pill-logo--text {
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+@media (min-width: 769px) {
+  .pill-logo--text {
+    position: absolute;
+    left: calc(50% - 50vw + 24px);
+  }
+}
+
+.pill-logo--animated {
+  width: clamp(148px, 24vw, 190px);
+  height: 64px;
+  margin-block: -11px;
+  overflow: visible;
+}
+
+@media (min-width: 769px) {
+  .pill-logo--animated {
+    left: calc(50% - 50vw + 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pill-logo--animated {
+    margin-left: -8px;
+  }
+}
+
 .pill-list {
   list-style: none;
   display: flex;

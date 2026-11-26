@@ -23,7 +23,7 @@ function App() {
                   <PageSEO
                     title="kavijfr | Software Developer & Cinematographer"
                     description="Portfolio of Kavija, a software developer and cinematographer showcasing software projects, web applications, creative work, and experiments."
-                    canonical="https://kavija.me/"
+                    canonical="https://kavija.arqeno.work/"
                   />
 
                   <Home />
@@ -38,7 +38,7 @@ function App() {
                   <PageSEO
                     title="Projects | kavijfr"
                     description="Explore software and web development projects by Kavija, including LocalHub, Moodflix, GitHub Account Viewer, management systems, and more."
-                    canonical="https://kavija.me/projects"
+                    canonical="https://kavija.arqeno.work/projects"
                   />
 
                   <Projects />
@@ -53,7 +53,7 @@ function App() {
                 <PageSEO
                   title="Interactions | kavijfr"
                   description="Commercial work, collaborations, and real-world systems by Kavija."
-                  canonical="https://kavija.me/stuff"
+                  canonical="https://kavija.arqeno.work/stuff"
                 />
 
                 <Interactions />
@@ -68,7 +68,7 @@ function App() {
                   <PageSEO
                     title="Isuru Villa | kavijfr"
                     description="A commercial villa management system designed and developed for Isuru Villa."
-                    canonical="https://kavija.me/interactions/isuru-villa"
+                    canonical="https://kavija.arqeno.work/interactions/isuru-villa"
                   />
 
                   <IsuruVilla />

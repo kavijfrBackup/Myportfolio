@@ -21,7 +21,7 @@ void main() {
 
 const ORIGINAL_QUALITY = 60;
 
-const buildFragment = (iterations) => {
+const buildFragment = () => {
   return `#version 300 es
 precision highp float;
 uniform vec2 iResolution;
@@ -140,7 +140,7 @@ export const Plasma = ({
 
     const program = new Program(gl, {
       vertex: vertex,
-      fragment: buildFragment(iterations),
+      fragment: buildFragment(),
       uniforms: {
         iTime: { value: 0 },
         iResolution: { value: new Float32Array([1, 1]) },
@@ -173,7 +173,7 @@ export const Plasma = ({
       containerEl.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
-    let resizePending = false;
+    let resizeFrame = 0;
     const setSize = () => {
       const rect = containerEl.getBoundingClientRect();
       const width = Math.max(1, Math.floor(rect.width * renderScale));
@@ -191,10 +191,9 @@ export const Plasma = ({
 
     const ro = new ResizeObserver(() => {
       // Batch rapid resize events (ex. during a window drag) into one setSize per frame.
-      if (resizePending) return;
-      resizePending = true;
-      requestAnimationFrame(() => {
-        resizePending = false;
+      if (resizeFrame) return;
+      resizeFrame = requestAnimationFrame(() => {
+        resizeFrame = 0;
         setSize();
       });
     });
@@ -294,6 +293,7 @@ export const Plasma = ({
 
     return () => {
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(resizeFrame);
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -302,9 +302,10 @@ export const Plasma = ({
       if (mouseInteractive && containerEl) {
         containerEl.removeEventListener('mousemove', handleMouseMove);
       }
-      try {
-        containerEl?.removeChild(canvas);
-      } catch {}
+      geometry.remove();
+      program.remove();
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      canvas.remove();
     };
   }, [color, speed, direction, scale, opacity, mouseInteractive, renderScale, maxDpr, targetFps, iterations]);
 

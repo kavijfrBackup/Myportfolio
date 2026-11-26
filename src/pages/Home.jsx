@@ -2,12 +2,15 @@ import StarBorder from "../components/StarBorder";
 import Dock from "../components/Dock";
 import SpecularButton from "../components/SpecularButton";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Mail, GraduationCap } from "lucide-react";
+import { Briefcase, Mail, GraduationCap } from "lucide-react";
 import PixelBlast from "../components/PixelBlast";
-import TechText from "../components/TechText";
+
+const badges = [
+  { label: "Co-Founder at Arqeno", Icon: Briefcase },
+  { label: "Undergraduate", Icon: GraduationCap }
+];
 
 function Home() {
-
   const dockItems = [
     {
       label: "GitHub",
@@ -26,6 +29,11 @@ function Home() {
       onClick: () => {
         window.location.href = "mailto:kavijageethika2006@gmail.com";
       }
+    },
+    {
+      label: "Arqeno",
+      icon: <img src="/arqeno-logo.png" alt="" width={20} height={20} />,
+      onClick: () => window.open("https://arqeno.work", "_blank", "noopener,noreferrer")
     }
   ];
 
@@ -55,34 +63,43 @@ function Home() {
       </div>
 
       <div className="home-content">
-        <SpecularButton
-          size="sm"
-          radius={999}
-          tint="#ffffff"
-          tintOpacity={0.02}
-          blur={10}
-          textColor="#b9b9b9"
-          lineColor="#ffffff"
-          baseColor="#343434"
-          intensity={1.2}
-          shineSize={12}
-          shineFade={45}
-          thickness={1}
-          speed={0.35}
-          followMouse
-          proximity={220}
-          autoAnimate
-          disabled
-          className="undergraduate-specular"
-        >
-          <span className="undergrad-content">
-            <GraduationCap size={17} strokeWidth={1.8} />
-            Undergraduate
-          </span>
-        </SpecularButton>
+        <img
+          className="profile-picture"
+          src="/profile.png"
+          alt="Silhouette at a computer workstation"
+          width={150}
+          height={150}
+        />
 
-        <div className="hero-title tech-title">
-          <TechText text="KAVIJFR" />
+        <div className="profile-badges">
+          {badges.map(({ label, Icon }) => (
+            <SpecularButton
+              key={label}
+              size="sm"
+              radius={999}
+              tint="#ffffff"
+              tintOpacity={0.02}
+              blur={10}
+              textColor="#b9b9b9"
+              lineColor="#ffffff"
+              baseColor="#343434"
+              intensity={1.2}
+              shineSize={12}
+              shineFade={45}
+              thickness={1}
+              speed={0.35}
+              followMouse
+              proximity={220}
+              autoAnimate
+              disabled
+              className="profile-badge"
+            >
+              <span className="profile-badge-content">
+                <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
+                {label}
+              </span>
+            </SpecularButton>
+          ))}
         </div>
 
         <div className="hero-roles">
@@ -93,7 +110,7 @@ function Home() {
             thickness={1}
             className="role-star"
           >
-            System Developer
+            Aspiring Software Engineer
           </StarBorder>
 
           <StarBorder
@@ -103,7 +120,7 @@ function Home() {
             thickness={1}
             className="role-star"
           >
-            Security Engineer
+            Network &amp; Security Enthusiast
           </StarBorder>
         </div>
 

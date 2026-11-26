@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import PillNav from "./PillNav";
+import TechText from "./TechText";
 
 function Navbar() {
   const location = useLocation();
@@ -13,7 +14,7 @@ function Navbar() {
   return (
     <header className="site-nav">
       <PillNav
-        logo="/j-logo.gif"
+        animatedBrand={<TechText text="KAVIJFR" fontSize={42} />}
         items={items}
         activeHref={location.pathname}
         baseColor="#050505"

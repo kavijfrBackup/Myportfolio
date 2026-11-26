@@ -5,7 +5,6 @@ import dashboardImg from "../assets/isuru/dashboard.png";
 import addRecordImg from "../assets/isuru/add-record.png";
 import roomsImg from "../assets/isuru/rooms.png";
 import incomeImg from "../assets/isuru/income.png";
-import auditImg from "../assets/isuru/audit.png";
 
 function IsuruVilla() {
   return (
@@ -254,24 +253,6 @@ function IsuruVilla() {
                 <p>
                   Financial information is presented clearly to support daily
                   operational tracking and reporting.
-                </p>
-              </div>
-            </article>
-
-            <article className="showcase-item">
-              <div className="showcase-image-wrap">
-                <img
-                  src={auditImg}
-                  alt="Isuru Villa audit log screen"
-                />
-              </div>
-
-              <div className="showcase-copy small">
-                <span>05 / Audit History</span>
-                <h3>Accountability built into the system.</h3>
-                <p>
-                  Administrative actions are recorded so activity can be reviewed
-                  when needed.
                 </p>
               </div>
             </article>
