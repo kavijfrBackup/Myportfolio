@@ -6,7 +6,7 @@ import { Briefcase, Mail, GraduationCap } from "lucide-react";
 import PixelBlast from "../components/PixelBlast";
 
 const badges = [
-  { label: "Co-Founder at Arqeno", Icon: Briefcase },
+  { label: "Co-Founder & CEO  at Arqeno", Icon: Briefcase },
   { label: "Undergraduate", Icon: GraduationCap }
 ];
 
